@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crave - Premium Food Delivery</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="ph-fill ph-hamburger"></i>
+                <span>Crave</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-target="home-view">Home</a></li>
+                <li><a href="#" class="nav-link" data-target="cart-view">Cart <span class="cart-badge"
+                            id="nav-cart-badge">0</span></a></li>
+                <li><a href="#" class="nav-link" data-target="about-view">About Us</a></li>
+                <li><a href="#" class="nav-link" data-target="contact-view">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="app-container">
+
+        <!-- Home View -->
+        <section id="home-view" class="view active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-text">
+                    <h2>Hungry? You're in the right place.</h2>
+                    <p>Order from our premium selection of dishes.</p>
+                </div>
+            </section>
+            +
+            <!-- Daily Special -->
+            <section class="daily-special" id="daily-special-section">
+                <div class="loading-special" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                    <i class="ph ph-spinner ph-spin"
+                        style="font-size: 2rem; display: inline-block; animation: spin 1s linear infinite;"></i>
+                    <p>Fetching today's special...</p>
+                </div>
+            </section>
+
+            <!-- Deals & Promotions -->
+            <section class="promotions-section">
+                <div class="promo-banner">
+                    <div class="promo-content">
+                        <span class="promo-badge">Limited Time Deals</span>
+                        <h3>Save up to 20% on selected dishes!</h3>
+                        <p>Look for the discount badge on our menu items below.</p>
+                    </div>
+                    <div class="promo-icon">
+                        <i class="ph-fill ph-ticket"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section class="categories">
+                <div class="category-list" id="category-list">
+                    <button class="cat-btn active" data-category="All">All</button>
+                    <button class="cat-btn" data-category="Pizza">Pizza</button>
+                    <button class="cat-btn" data-category="Burger">Burger</button>
+                    <button class="cat-btn" data-category="Asian">Asian</button>
+                    <button class="cat-btn" data-category="Dessert">Dessert</button>
+                </div>
+            </section>
+
+            <!-- Menu Section -->
+            <section class="menu-section">
+                <div class="menu-grid" id="menu-grid">
+                    <!-- JavaScript will populate items here -->
+                </div>
+            </section>
+        </section>
+
+        <!-- Cart & Checkout View -->
+        <section id="cart-view" class="view">
+            <div class="cart-checkout-container">
+                <div class="cart-section">
+                    <h2>Your Cart</h2>
+                    <div class="cart-items" id="cart-items">
+                        <!-- JavaScript will populate cart items -->
+                    </div>
+                    <div class="cart-total-row">
+                        <span>Total</span>
+                        <span class="cart-total-price">$<span id="cart-total">0.00</span></span>
+                    </div>
+                </div>
+
+                <div class="checkout-section">
+                    <h2>Checkout</h2>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="fullname" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number (10 digits)" required
+                                pattern="[0-9]{10}">
+                        </div>
+                        <div class="form-group location-group">
+                            <label>Delivery Address</label>
+                            <div class="location-input-wrapper">
+                                <textarea id="address" placeholder="Enter your full delivery address..." required
+                                    rows="3"></textarea>
+                                <button type="button" class="btn-location" id="btn-location"
+                                    title="Auto-detect location">
+                                    <i class="ph ph-crosshair"></i> Detect
+                                </button>
+                            </div>
+                        </div>
+                        <div class="payment-methods">
+                            <h3>Payment Method</h3>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cod" checked>
+                                <span class="custom-radio"></span>
+                                Cash on Delivery
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="upi">
+                                <span class="custom-radio"></span>
+                                UPI
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="card">
+                                <span class="custom-radio"></span>
+                                Card
+                            </label>
+                        </div>
+                        <button type="submit" class="place-order-btn" id="place-order-btn" disabled>Place Order • $<span
+                                id="checkout-total">0.00</span></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us View -->
+        <section id="about-view" class="view">
+            <h2 class="section-title">About Us</h2>
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <div class="profile-img">
+                        <img src="pictures/new.jpeg" alt="Leena Mittal">
+                    </div>
+                    <h3>Leena Mittal</h3>
+                    <p>Pursuing a Bachelor of Technology (B.Tech) in Computer Science and Engineering (CSE) at Chitkara
+                        University, Himachal Pradesh; 2nd Semester, 1st Year (2025 Batch), working as a Frontend
+                        Developer.</p>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-img">
+                        <img src="pictures/ko mals.jpeg" alt="Aryan Sharma">
+                    </div>
+                    <h3>Komal</h3>
+                    <p>Pursuing a Bachelor of Technology (B.Tech) in Computer Science and Engineering (CSE) at Chitkara
+                        University, Himachal Pradesh; 2nd Semester, 1st Year (2025 Batch), working as a Frontend
+                        Developer.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us View -->
+        <section id="contact-view" class="view">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="profile-grid">
+                <div class="profile-card contact-card">
+                    <h3>Leena Mittal</h3>
+                    <div class="contact-details">
+                        <p><i class="ph ph-phone"></i> +91 6284668025</p>
+                        <a href="https://www.linkedin.com/in/leena-mittal-061127388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            target="_blank" class="social-link"><i class="ph-fill ph-linkedin-logo"></i> LinkedIn</a>
+                        <a href="https://www.instagram.com/leena_mittal__?igsh=MTd4Znh2OWdseDNlaw==" target="_blank"
+                            class="social-link"><i class="ph-fill ph-instagram-logo"></i> Instagram</a>
+                    </div>
+                </div>
+                <div class="profile-card contact-card">
+                    <h3>Komal</h3>
+                    <div class="contact-details">
+                        <p><i class="ph ph-phone"></i> +91 8295618830</p>
+                        <a href="https://www.linkedin.com/in/komal-parihar-100b34388?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                            target="_blank" class="social-link"><i class="ph-fill ph-linkedin-logo"></i> LinkedIn</a>
+                        <a href="https://www.instagram.com/komal._0_?igsh=eDBzMmJsZTBwMDBr target=" _blank"
+                            class="social-link"><i class="ph-fill ph-instagram-logo"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-content success-content">
+            <div class="success-icon">
+                <i class="ph-fill ph-check-circle"></i>
+            </div>
+            <h2>Order Confirmed!</h2>
+            <p>Your delicious food is on the way.</p>
+            <div class="delivery-details" id="delivery-details-container">
+                <div class="delivery-time">
+                    <i class="ph ph-clock"></i>
+                    <span>Estimated Delivery: <strong>25–30 minutes</strong></span>
+                </div>
+                <div class="delivery-partner">
+                    <div class="partner-avatar">
+                        <i class="ph-fill ph-user-circle"></i>
+                    </div>
+                    <div class="partner-info">
+                        <span class="partner-role">Delivery Partner</span>
+                        <h4 id="partner-name">Alex Johnson</h4>
+                        <span class="partner-phone" id="partner-phone"><i class="ph ph-phone"></i> +1
+                            234-567-8900</span>
+                    </div>
+                </div>
+            </div>
+            <button class="close-success-btn" id="close-success-btn">Back to Home</button>
+        </div>
+    </div>
+
+    <!-- External JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
